@@ -39,7 +39,7 @@ public class Login extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
 
     SignInButton Google_sign_inbtn;
-    private static final int RC_SIGN_IN = 9001;
+    private static final int RC_SIGN_IN = 1000;
 
     TextInputLayout passwordLayout;
 

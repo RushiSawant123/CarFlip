@@ -50,6 +50,24 @@ public class CarLogoActivity extends AppCompatActivity {
                 return R.drawable.toyota;
             case 6:
                 return R.drawable.honda;
+            case 7:
+                return R.drawable.volkswagen;
+            case 8:
+                return R.drawable.renault;
+            case 9:
+                return R.drawable.volvo;
+            case 10:
+                return R.drawable.jeep;
+            case 11:
+                return R.drawable.land_rover;
+            case 12:
+                return R.drawable.nissan;
+            case 13:
+                return R.drawable.mercedes_benz;
+            case 14:
+                return R.drawable.mercedes_maybach;
+            case 15:
+                return R.drawable.mercedes_amg;
             default:
                 return R.drawable.more_icon; // Default car logo resource
         }

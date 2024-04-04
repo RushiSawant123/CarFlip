@@ -72,8 +72,6 @@
     <string name="profile_text">Profile</string>
 
 
-
-
     <string name="login">Login</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -111,5 +109,15 @@
     <string name="_3_54_l">₹ 3.54 L</string>
     <string name="carimage">carimage</string>
     <string name="asset_statements" />
+    <string name="car_details">car details</string>
+    <string name="like_button">like button</string>
+    <string name="car_name">car_name</string>
+    <string name="car_brand_name">car_brand_name</string>
+    <string name="fuel_type">Fuel Type</string>
+    <string name="fueltype">fueltype</string>
+    <string name="exshowroomprice">exShowroomPrice</string>
+    <string name="ex_showroom_price">EX-Showroom Price</string>
+    <string name="car_color_images">car color images</string>
+    <string name="searchhere">SearchHere</string>
 
 </resources>

@@ -1,5 +1,3 @@
-// BuycarsFragment.java
-
 package com.example.carflip.ui.buycarpage;
 
 import android.content.Intent;
@@ -65,10 +63,11 @@ public class BuycarsFragment extends Fragment {
     }
 
     private void onCarIconClicked(int position) {
-            Intent intent = new Intent(requireContext(), CarLogoActivity.class);
-            intent.putExtra("car_logo", carIcons[position]); // Pass the car logo resource id to CarLogoActivity
-            startActivity(intent);
+        Intent intent = new Intent(requireContext(), CarLogoActivity.class);
+        intent.putExtra("selectedCarIcon", position); // Use "selectedCarIcon" as the key
+        startActivity(intent);
     }
+
 
     @Override
     public void onDestroyView() {

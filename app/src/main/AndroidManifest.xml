@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -18,57 +17,56 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarFlip"
         tools:targetApi="31">
-
         <activity
-            android:name=".SplashActivity"
-            android:exported="true"
-            android:theme="@style/Theme.CarFlip.NoActionBarAndStatusBar">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN"/>
-
-            <category android:name="android.intent.category.LAUNCHER"/>
-        </intent-filter>
-        </activity>
-
+            android:name=".search_View"
+            android:exported="false" />
         <activity
-            android:name=".Onboarding.OnboardingActivity"
-            android:exported="true"
-            android:theme="@style/Theme.CarFlip.NoActionBarAndStatusBar"/>
-
+            android:name=".processlayout"
+            android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:theme="@style/Theme.CarFlip.NoActionBarAndStatusBar"/>
-
-
+            android:name=".all_cars_page"
+            android:exported="false" />
         <activity
             android:name=".Login"
             android:exported="true"
-            android:theme="@style/Theme.CarFlip.NoActionBarAndStatusBar"/>
+            android:theme="@style/Theme.CarFlip.NoActionBarAndStatusBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Onboarding.OnboardingActivity"
+            android:exported="true"
+            android:theme="@style/Theme.CarFlip.NoActionBarAndStatusBar" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.CarFlip.NoActionBarAndStatusBar" />
+        <activity
+            android:name=".CarDetailsActivity"
+            android:exported="true"
+            android:theme="@style/Theme.CarFlip.NoActionBarAndStatusBar" />
         <activity
             android:name=".forget_passwordActivity"
             android:exported="false"
-            android:theme="@style/Theme.CarFlip.NoActionBarAndStatusBar"/>
-
+            android:theme="@style/Theme.CarFlip.NoActionBarAndStatusBar" />
         <activity
             android:name=".Register2"
             android:exported="true"
-            android:theme="@style/Theme.CarFlip.NoActionBarAndStatusBar"/>
-
-        <activity android:name=".CarLogoActivity"
+            android:theme="@style/Theme.CarFlip.NoActionBarAndStatusBar" />
+        <activity
+            android:name=".CarLogoActivity"
             android:exported="true"
-            android:theme="@style/Theme.CarFlip.NoActionBarAndStatusBar"/>
-
+            android:theme="@style/Theme.CarFlip.NoActionBarAndStatusBar" />
 
         <meta-data
             android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts"/>
-
-          <meta-data android:name="asset_statements"
+            android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="asset_statements"
             android:resource="@string/asset_statements" />
-
-
     </application>
 
 </manifest>

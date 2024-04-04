@@ -81,26 +81,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp">
 
-                <SearchView
-                    android:id="@+id/search_bar"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/login_bar"
-                    android:drawableEnd="@drawable/baseline_search_24"
-                    android:ems="10"
-                    android:hint="@string/search"
-                    android:importantForAutofill="no"
-                    android:inputType="text"
-                    android:text="@string/search"
+                <ImageView
+                    android:layout_width="29dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/search_symbol"
+                    android:src="@drawable/search_symbol"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.007"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="VisualLintTextFieldSize" />
+                    app:layout_constraintVertical_bias="0.6"
+                    tools:ignore="MissingConstraints">
+
+                </ImageView>
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -135,6 +131,18 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+                <TextView
+                    android:id="@+id/SearchViewText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Result here"
+                    app:layout_constraintBottom_toTopOf="@+id/textView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.056"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -170,7 +178,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/car_by_brand" />
+                    app:layout_constraintTop_toBottomOf="@+id/car_by_brand"
+                    tools:ignore="NestedScrolling" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -191,20 +200,6 @@
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <GridView
-                    android:id="@+id/topcars"
-                    android:layout_width="match_parent"
-                    android:layout_height="500dp"
-                    android:layout_marginTop="20dp"
-                    android:numColumns="auto_fit"
-                    android:gravity="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView2">
-
-                </GridView>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

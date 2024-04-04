@@ -1,7 +1,5 @@
 package com.example.carflip.ui.home;
 
-import static com.example.carflip.R.id.imageViewCarIcon;
-
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
@@ -11,8 +9,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,12 +21,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.carflip.CarLogoActivity;
+import com.example.carflip.MainActivity;
 import com.example.carflip.R;
-import com.example.carflip.homepageadapter.CarIconsAdapter;
+import com.example.carflip.Register2;
 import com.example.carflip.homepageadapter.PopularCarsAdapter;
-import com.example.carflip.homepageadapter.TopCarsAdapter;
 import com.example.carflip.homepageadapter.popularcarsmodel;
+import com.example.carflip.search_View;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -42,46 +40,40 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 123;
-    private GridView mTopCarsGridView;
-    private TopCarsAdapter mTopCarsAdapter;
-    private final ArrayList<popularcarsmodel> arrPopularCars = new ArrayList<>();
     private TextView greetingTextView;
-    private GridView carIconsGridView;
     private RecyclerView popularCarsRecyclerView;
     private Activity view;
     private View root;
 
+    ImageView Search_symbol;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        // Find the GridView by ID
-        mTopCarsGridView = root.findViewById(R.id.topcars);
-
-        // Initialize the adapter
-        mTopCarsAdapter = new TopCarsAdapter(requireContext());
-
-        // Call the fetchData method to fetch data from Firebase
-        mTopCarsAdapter.fetchData();
-
-        // Set the adapter to the GridView
-        mTopCarsGridView.setAdapter(mTopCarsAdapter);
         greetingTextView = root.findViewById(R.id.greetings);
-        carIconsGridView = root.findViewById(imageViewCarIcon);
         popularCarsRecyclerView = root.findViewById(R.id.popularcars);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
         popularCarsRecyclerView.setLayoutManager(layoutManager);
+        Search_symbol = root.findViewById(R.id.search_symbol);
 
-        // Execute AsyncTask to fetch popular cars data
+
+
+            Search_symbol.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(requireContext(), search_View.class);
+                    startActivity(intent);
+                }
+            });
+
+
         new FetchPopularCarsTask().execute();
 
         ImageButton locationButton = root.findViewById(R.id.LocationButton);
         locationButton.setOnClickListener(view -> checkLocationPermission());
 
         setGreetingText();
-        setupCarIcons();
 
         return root;
     }
@@ -116,7 +108,6 @@ public class HomeFragment extends Fragment {
         protected void onPostExecute(List<popularcarsmodel> popularCarsList) {
             super.onPostExecute(popularCarsList);
 
-            // Create and set the adapter
             PopularCarsAdapter adapter = new PopularCarsAdapter(popularCarsList);
             popularCarsRecyclerView.setAdapter(adapter);
         }
@@ -144,20 +135,6 @@ public class HomeFragment extends Fragment {
         }
 
         greetingTextView.setText(greeting + " " + emoji);
-    }
-
-    private void setupCarIcons() {
-        Integer[] carIcons = {R.drawable.maruti_suzuki, R.drawable.tata, R.drawable.hyundai, R.drawable.mahindra, R.drawable.bmw, R.drawable.toyota, R.drawable.honda, R.drawable.more_icon};
-        CarIconsAdapter adapter = new CarIconsAdapter(requireContext(), carIcons);
-        carIconsGridView.setAdapter(adapter);
-
-        carIconsGridView.setOnItemClickListener((parent, view, position, id) -> onCarIconClicked(position));
-    }
-
-    public void onCarIconClicked(int position) {
-        Intent intent = new Intent(requireContext(), CarLogoActivity.class); // Replace CarLogoActivity with the actual activity or fragment name
-        intent.putExtra("selectedCarIcon", position); // Pass any data to the new activity or fragment if needed
-        startActivity(intent);
     }
 
     private void checkLocationPermission() {

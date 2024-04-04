@@ -7,11 +7,15 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/car_details"
+        android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,33 +26,1166 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/car_image"
+                <TextView
+                    android:id="@+id/car_detailes"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/alata"
+                    android:text="Car Detailes"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/car_images" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/appbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/app_bar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageButton
+                        android:id="@+id/back_button"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/app_bar"
+                        android:contentDescription="@string/back_button"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/back_icon" />
+
+                    <TextView
+                        android:id="@+id/car_brand_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/alata"
+                        android:text="@string/car_brand_name"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/favorite_button"
+                        app:layout_constraintStart_toEndOf="@+id/back_button"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageButton
+                        android:id="@+id/favorite_button"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/app_bar"
+                        android:contentDescription="@string/favorite_button"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/baseline_favorite_border_24" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/car_images"
+                    android:layout_width="match_parent"
                     android:layout_height="300dp"
-                    android:contentDescription="car images"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="#00000000"
                     android:elevation="0dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/car_image_1"
-                    tools:srcCompat="@drawable/car_image_1" />
+                    app:layout_constraintTop_toBottomOf="@+id/appbar">
 
-                <Button
-                    android:id="@+id/button"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/viewPager2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+                        android:id="@+id/dots_indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:elevation="3dp"
+                        app:dotsColor="#FFFFFF"
+                        app:dotsCornerRadius="8dp"
+                        app:dotsSize="10dp"
+                        app:dotsSpacing="4dp"
+                        app:dotsWidthFactor="2.5"
+                        app:layout_constraintBottom_toBottomOf="@+id/viewPager2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:progressMode="true"
+                        app:selectedDotColor="#FFFFFF"
+                        tools:ignore="MissingConstraints" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/car_price_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="205dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/text_bg"
+                    android:elevation="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/appbar">
+
+                    <TextView
+                        android:id="@+id/car_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/alata"
+                        android:text="@string/car_name"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/car_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/popular_car_price"
+                        android:textSize="17sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/car_name" />
+
+                    <TextView
+                        android:id="@+id/exShowroomPrice_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:fontFamily="@font/alata"
+                        android:text="@string/ex_showroom_price"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/exShowroomPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="@string/exshowroomprice"
+                        android:textSize="17sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/exShowroomPrice_text" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/car_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/app_bar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/car_detailes">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/fuel_data"
+                        android:layout_width="200dp"
+                        android:layout_height="100dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/fueltype_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="6dp"
+                            android:text="@string/fuel_type"
+                            android:textColor="#3B3B3B"
+                            app:layout_constraintStart_toEndOf="@+id/fuel_type_icon"
+                            app:layout_constraintTop_toTopOf="@+id/fuel_type_icon" />
+
+                        <ImageView
+                            android:id="@+id/fuel_type_icon"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            android:contentDescription="@string/fuel_type"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/fuel_type" />
+
+                        <TextView
+                            android:id="@+id/fueltype"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="6dp"
+                            android:text="@string/fueltype"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toBottomOf="@+id/fuel_type_icon"
+                            app:layout_constraintStart_toEndOf="@+id/fuel_type_icon"
+                            app:layout_constraintTop_toBottomOf="@+id/fueltype_text" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/transmission_data"
+                        android:layout_width="200dp"
+                        android:layout_height="100dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/transmission_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="6dp"
+                            android:text="Transmission"
+                            app:layout_constraintStart_toEndOf="@+id/Transmission_icon"
+                            app:layout_constraintTop_toTopOf="@+id/Transmission_icon" />
+
+                        <ImageView
+                            android:id="@+id/Transmission_icon"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/engine" />
+
+                        <TextView
+                            android:id="@+id/Transmission"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="Transmission"
+                            app:layout_constraintBottom_toBottomOf="@+id/Transmission_icon"
+                            app:layout_constraintStart_toEndOf="@+id/Transmission_icon"
+                            app:layout_constraintTop_toBottomOf="@+id/transmission_text" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/BatteryRange_data"
+                        android:layout_width="200dp"
+                        android:layout_height="100dp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toTopOf="@+id/seating_data"
+                        app:layout_constraintEnd_toEndOf="@+id/mileage_data"
+                        app:layout_constraintStart_toStartOf="@+id/mileage_data"
+                        app:layout_constraintTop_toBottomOf="@+id/fuel_data">
+
+                        <TextView
+                            android:id="@+id/batteryrange_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="6dp"
+                            android:text="TextView"
+                            app:layout_constraintStart_toEndOf="@+id/BatteryRange_icon"
+                            app:layout_constraintTop_toTopOf="@+id/BatteryRange_icon" />
+
+                        <ImageView
+                            android:id="@+id/BatteryRange_icon"
+                            android:layout_width="70dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="20dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/battery_range" />
+
+                        <TextView
+                            android:id="@+id/BatteryRange"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Battery Range"
+                            app:layout_constraintStart_toEndOf="@+id/BatteryRange_icon"
+                            app:layout_constraintTop_toBottomOf="@+id/batteryrange_text" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/mileage_data"
+                        android:layout_width="200dp"
+                        android:layout_height="100dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fuel_data">
+
+                        <TextView
+                            android:id="@+id/mileage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:text="Mileage"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                            app:layout_constraintStart_toEndOf="@+id/imageView6"
+                            app:layout_constraintTop_toBottomOf="@+id/mileage_text" />
+
+                        <ImageView
+                            android:id="@+id/imageView6"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/mileage" />
+
+                        <TextView
+                            android:id="@+id/mileage_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="6dp"
+                            android:text="Mileage"
+                            app:layout_constraintStart_toEndOf="@+id/imageView6"
+                            app:layout_constraintTop_toTopOf="@+id/imageView6" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/ChargingTime_data"
+                        android:layout_width="200dp"
+                        android:layout_height="100dp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="@+id/tank_capacity_data"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tank_capacity_data"
+                        app:layout_constraintTop_toBottomOf="@+id/transmission_data">
+
+                        <TextView
+                            android:id="@+id/ChargingTime_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="6dp"
+                            android:text="Charging Time"
+                            app:layout_constraintStart_toEndOf="@+id/ChargingTime_icon"
+                            app:layout_constraintTop_toTopOf="@+id/ChargingTime_icon" />
+
+                        <ImageView
+                            android:id="@+id/ChargingTime_icon"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/charging_time" />
+
+                        <TextView
+                            android:id="@+id/chargingtime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Charging Time"
+                            app:layout_constraintStart_toEndOf="@+id/ChargingTime_icon"
+                            app:layout_constraintTop_toBottomOf="@+id/ChargingTime_text" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/tank_capacity_data"
+                        android:layout_width="200dp"
+                        android:layout_height="100dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/transmission_data">
+
+                        <TextView
+                            android:id="@+id/tankcapacity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="Tank Capacity"
+                            app:layout_constraintBottom_toBottomOf="@+id/tank_capacity_icon"
+                            app:layout_constraintStart_toEndOf="@+id/tank_capacity_icon"
+                            app:layout_constraintTop_toBottomOf="@+id/tank_capacity_text" />
+
+                        <TextView
+                            android:id="@+id/tank_capacity_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="6dp"
+                            android:text="Tank Capacity"
+                            app:layout_constraintStart_toEndOf="@+id/tank_capacity_icon"
+                            app:layout_constraintTop_toTopOf="@+id/tank_capacity_icon" />
+
+                        <ImageView
+                            android:id="@+id/tank_capacity_icon"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/fuel_tank" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/seating_data"
+                        android:layout_width="200dp"
+                        android:layout_height="100dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/mileage_data">
+
+                        <TextView
+                            android:id="@+id/seating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="Seating"
+                            app:layout_constraintBottom_toBottomOf="@+id/seating_icon"
+                            app:layout_constraintStart_toEndOf="@+id/seating_icon"
+                            app:layout_constraintTop_toBottomOf="@+id/Seating_text" />
+
+                        <TextView
+                            android:id="@+id/Seating_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="6dp"
+                            android:text="Seating"
+                            app:layout_constraintStart_toEndOf="@+id/seating_icon"
+                            app:layout_constraintTop_toTopOf="@+id/seating_icon" />
+
+                        <ImageView
+                            android:id="@+id/seating_icon"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/seat" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/bodytype_data"
+                        android:layout_width="200dp"
+                        android:layout_height="100dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tank_capacity_data">
+
+                        <TextView
+                            android:id="@+id/bodytype"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="Body Type"
+                            app:layout_constraintBottom_toBottomOf="@+id/bodytype_icon"
+                            app:layout_constraintStart_toEndOf="@+id/bodytype_icon"
+                            app:layout_constraintTop_toBottomOf="@+id/bodytype_text" />
+
+                        <TextView
+                            android:id="@+id/bodytype_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="6dp"
+                            android:text="Body Type"
+                            app:layout_constraintStart_toEndOf="@+id/bodytype_icon"
+                            app:layout_constraintTop_toTopOf="@+id/bodytype_icon" />
+
+                        <ImageView
+                            android:id="@+id/bodytype_icon"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/resource_class" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <TextView
+                    android:id="@+id/car_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/back_icon"
-                    android:contentDescription="@string/back_button"
-                    android:elevation="3dp"
+                    android:fontFamily="@font/alata"
+                    android:text="Colour Options"
+                    android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <HorizontalScrollView
+                    android:id="@+id/horizontalScrollView"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/app_bar"
+                    android:contentDescription="@string/car_color_images"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/car_color">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/color_data"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/color1_data"
+                            android:layout_width="300dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/app_bar"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/color1_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="@font/alata"
+                                android:text=" Maruti Suzuki Alto 800 Uptown Red"
+                                android:textSize="17sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/color1_image"
+                                android:layout_width="290dp"
+                                android:layout_height="200dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:scaleType="fitXY"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/color1_name"
+                                app:srcCompat="@drawable/car_image_1" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/color2_data"
+                            android:layout_width="300dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/app_bar"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/color1_data"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/color2_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="@font/alata"
+                                android:text="Maruti Suzuki Alto 800 Silky Silver"
+                                android:textSize="17sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/color2_image"
+                                android:layout_width="290dp"
+                                android:layout_height="200dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:scaleType="fitXY"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/color2_name"
+                                app:srcCompat="@drawable/car_image_2" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/color3_data"
+                            android:layout_width="300dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/app_bar"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/color2_data"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/color3_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="@font/alata"
+                                android:text="Maruti Suzuki Alto 800 Cerulean Blue"
+                                android:textSize="17sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/color3_image"
+                                android:layout_width="290dp"
+                                android:layout_height="200dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:scaleType="fitXY"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/color3_name"
+                                app:srcCompat="@drawable/car_image_3" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </HorizontalScrollView>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/app_bar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">
+
+                    <TextView
+                        android:id="@+id/pricingandcosts_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/alata"
+                        android:text="Pricing and Costs"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/exshowroomprice_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/alata"
+                        android:text="Ex-Showroom Price:"
+                        android:textSize="17sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/pricingandcosts_text" />
+
+                    <TextView
+                        android:id="@+id/exshowroomprice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:fontFamily="@font/alata"
+                        android:text="Ex-Showroom Price"
+                        android:textSize="17sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/exshowroomprice_text"
+                        app:layout_constraintStart_toEndOf="@+id/exshowroomprice_text"
+                        app:layout_constraintTop_toTopOf="@+id/exshowroomprice_text" />
+
+                    <TextView
+                        android:id="@+id/valueformoney_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/alata"
+                        android:text="Value For Money:"
+                        android:textSize="17sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/exshowroomprice_text" />
+
+                    <TextView
+                        android:id="@+id/valueformoney"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:fontFamily="@font/alata"
+                        android:text="Value For Money"
+                        android:textSize="17sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/valueformoney_text"
+                        app:layout_constraintStart_toEndOf="@+id/valueformoney_text"
+                        app:layout_constraintTop_toTopOf="@+id/valueformoney_text" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:background="@drawable/app_bar"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/valueformoney_text">
+
+                        <androidx.gridlayout.widget.GridLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            app:columnCount="2"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:rowCount="9">
+
+                            <TextView
+                                android:id="@+id/location"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="50dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="50dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="Location"
+                                android:textSize="17sp"
+                                app:layout_column="0"
+                                app:layout_row="1"
+                                tools:fontFamily="@font/alata" />
+
+                            <TextView
+                                android:id="@+id/onroadprice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="60dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="60dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="On-Road Price"
+                                android:textSize="17sp"
+                                app:layout_column="1"
+                                app:layout_row="1"
+                                tools:fontFamily="@font/alata" />
+
+                            <TextView
+                                android:id="@+id/bangalore_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="Bangalore"
+                                android:textSize="17sp"
+                                app:layout_column="0"
+
+                                app:layout_row="2"
+                                tools:fontFamily="@font/alata" />
+
+                            <TextView
+                                android:id="@+id/Kolkata_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="Kolkata"
+                                android:textSize="17sp"
+                                app:layout_column="0"
+                                app:layout_row="3"
+                                tools:fontFamily="@font/alata" />
+
+                            <TextView
+                                android:id="@+id/lucknow_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="Lucknow"
+                                android:textSize="17sp"
+                                app:layout_column="0"
+                                app:layout_row="4"
+                                tools:fontFamily="@font/alata" />
+
+                            <TextView
+                                android:id="@+id/mumbai_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="Mumbai"
+                                android:textSize="17sp"
+                                app:layout_column="0"
+                                app:layout_row="5"
+                                tools:fontFamily="@font/alata" />
+
+                            <TextView
+                                android:id="@+id/newdelhi_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="New Delhi"
+                                android:textSize="17sp"
+                                app:layout_column="0"
+                                app:layout_row="6"
+                                tools:fontFamily="@font/alata" />
+
+                            <TextView
+                                android:id="@+id/pune_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="Pune"
+                                android:textSize="17sp"
+                                app:layout_column="0"
+                                app:layout_row="7"
+                                tools:fontFamily="@font/alata" />
+
+
+                            <TextView
+                                android:id="@+id/hyderabad_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="Hyderabad"
+                                android:textSize="17sp"
+                                app:layout_column="0"
+                                app:layout_row="8"
+                                tools:fontFamily="@font/alata" />
+
+                            <TextView
+                                android:id="@+id/bangaloreprice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="60dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="60dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="bangaloreprice"
+                                android:textSize="17sp"
+                                app:layout_column="1"
+                                app:layout_row="2"
+                                tools:fontFamily="@font/alata" />
+
+                            <TextView
+                                android:id="@+id/kolkataprice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="60dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="60dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="kolkataprice"
+                                android:textSize="17sp"
+                                app:layout_column="1"
+                                app:layout_row="3"
+                                tools:fontFamily="@font/alata" />
+
+                            <TextView
+                                android:id="@+id/lucknowprice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="60dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="60dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="lucknowprice"
+                                android:textSize="17sp"
+                                app:layout_column="1"
+                                app:layout_row="4"
+                                tools:fontFamily="@font/alata" />
+
+                            <TextView
+                                android:id="@+id/mumbaiprice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="60dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="60dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="mumbaiprice"
+                                android:textSize="17sp"
+                                app:layout_column="1"
+                                app:layout_row="5"
+                                tools:fontFamily="@font/alata" />
+
+                            <TextView
+                                android:id="@+id/newdelhiprice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="60dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="60dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="newdelhiprice"
+                                android:textSize="17sp"
+                                app:layout_column="1"
+                                app:layout_row="6"
+                                tools:fontFamily="@font/alata" />
+
+                            <TextView
+                                android:id="@+id/puneprice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="60dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="60dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="puneprice"
+                                android:textSize="17sp"
+                                app:layout_column="1"
+                                app:layout_row="7"
+                                tools:fontFamily="@font/alata" />
+
+                            <TextView
+                                android:id="@+id/hyderabadprice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="60dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="60dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="hyderabadprice"
+                                android:textSize="17sp"
+                                app:layout_column="1"
+                                app:layout_row="8"
+                                tools:fontFamily="@font/alata" />
+
+
+                        </androidx.gridlayout.widget.GridLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="500dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/app_bar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/EngineCC_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="Engine CC"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/EngineCC"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/EngineCC"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Engine CC"
+                        android:textColor="@color/white"
+                        android:textSize="19sp"
+                        app:layout_constraintStart_toStartOf="@+id/EngineCC_text"
+                        app:layout_constraintTop_toBottomOf="@+id/EngineCC_text" />
+
+                    <TextView
+                        android:id="@+id/maxtorque_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="80dp"
+                        android:layout_marginTop="20dp"
+                        android:text="Max Torque"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/EngineCC_text"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/maxtorque"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Max Torque"
+                        android:textColor="@color/white"
+                        android:textSize="19sp"
+                        app:layout_constraintStart_toStartOf="@+id/maxtorque_text"
+                        app:layout_constraintTop_toBottomOf="@+id/maxtorque_text" />
+
+                    <TextView
+                        android:id="@+id/MaxPower_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="30dp"
+                        android:text="Max Power"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/EngineCC" />
+
+                    <TextView
+                        android:id="@+id/maxpower"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Max Power"
+                        android:textColor="@color/white"
+                        android:textSize="19sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/MaxPower_text" />
+
+                    <TextView
+                        android:id="@+id/BootSpace_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:text="Boot Space"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@+id/maxtorque_text"
+                        app:layout_constraintTop_toBottomOf="@+id/maxtorque" />
+
+                    <TextView
+                        android:id="@+id/bootspace"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Boot Space"
+                        android:textColor="@color/white"
+                        android:textSize="19sp"
+                        app:layout_constraintStart_toStartOf="@+id/BootSpace_text"
+                        app:layout_constraintTop_toBottomOf="@+id/BootSpace_text" />
+
+                    <TextView
+                        android:id="@+id/LengthWidthHeight_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="30dp"
+                        android:text="Length/Width/Height"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/maxpower" />
+
+                    <TextView
+                        android:id="@+id/LengthWidthHeight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="Length/Width/Height"
+                        android:textColor="@color/white"
+                        android:textSize="19sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/LengthWidthHeight_text" />
+
+                    <TextView
+                        android:id="@+id/Airbags_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="30dp"
+                        android:text="Airbags"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/LengthWidthHeight_text"
+                        app:layout_constraintTop_toBottomOf="@+id/bootspace" />
+
+                    <TextView
+                        android:id="@+id/Airbags"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Airbags"
+                        android:textColor="@color/white"
+                        android:textSize="19sp"
+                        app:layout_constraintStart_toStartOf="@+id/Airbags_text"
+                        app:layout_constraintTop_toBottomOf="@+id/Airbags_text" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
